@@ -1,0 +1,45 @@
+<html>
+<head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+        <meta name='viewport' content='width=device-width,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+        <title>Search in the Lolicon.App V3 - Lolicon.App涩图检索工具3.0</title>
+        <link href='' rel='icon' type='image/x-icon'>
+        <link rel="stylesheet" type="text/css" href="css/public.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <div id='overlay' class='overlay'>
+        <div class='text-bg'>
+            <div class='input_control'>
+                <h3>
+                    <form action="" method="post" target="result_iframe" onsubmit="runTool()">
+                        <input id='keyword' type='keyword' name='keyword' placeholder='请输入搜索关键词'><br>
+                        全年龄
+                        <input id='radio0' type='radio' checked='checked' onclick="radioCheck1(0)">&emsp;&emsp;
+                        R18
+                        <input id='radio1' type='radio' onclick="radioCheck1(1)">&emsp;&emsp;
+                        随机
+                        <input id='radio2' type='radio' onclick="radioCheck1(2)"><br>
+                        PID
+                        <input id='radio3' type='radio' onclick="radioCheck2()">&ensp;&ensp;
+                        获取
+                        <span id='numberInfo'></span>
+                        <input id='submit' type='submit' value='立即搜索' name='submit'>
+                    </form>
+                    <div id='setuObj' class='setuObj'></div>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div id='imgLayer'></div>
+    <div id='imgBoxl' class='modal'>
+        <div id="bigimg">
+            <h3 style="text-align:center;">加载完成</h3>
+            <input id='submit' type='submit' value='Link Start !' onclick="openTools()">
+        </div>
+    </div>
+    <iframe id="result_iframe" name="result_iframe" style="display:none;"></iframe>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/public.js"></script>
+</body>

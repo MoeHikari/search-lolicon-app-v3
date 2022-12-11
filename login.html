@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta name='viewport' content='width=device-width,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+    <title>登录 | Search in the Lolicon.App V3 - Lolicon.App涩图检索工具3.0</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body style='margin:0px'>
+    <div id='overlay' class='overlay'>
+        <div class='text-bg'>
+            <div class='input_control'>
+                <h3>
+                    <form action="" method="post" target="result_iframe" onsubmit="loginer()">
+                        <input id='license' type='password' name='license' placeholder='请输入内部许可码'>
+                        <input id='submit' type='submit' value='登录'>
+                    </form>
+                </h3>
+                <div class='notice'>
+                    <p>
+                        <b>欢迎使用Lolicon.App涩图检索工具3.0！</b>
+                    </p>
+                    <p>请阅读以下说明:</p>
+                    <p>搜索时支持AND和OR规则，方法如下:</p>
+                    <p>1.你可以使用逗号【,】来获取包含特定多个tag的涩图(最多3个)，如【可莉,白丝】</p>
+                    <p>2.你可以使用分割符【|】来获取包含任意一个tag的涩图(最多20个)，如【黑丝|白丝|萝莉】</p>
+                    <p>3.你可以两者混用，如【可莉,黑丝|白丝】</p>
+                    <p>4.如果你只搜索一个关键词，网站将会在标题/Tag/画师中进行模糊搜索</p>
+                    <p>5.网站也支持搜索特定画师的涩图，你可以使用类似如下语句【UID:画师UID】进行搜索(注意这种搜索方式不能包含其他关键词)</p>
+                    <p>6.在此之外，网站也支持通过PID获取任意Pixiv图片原图，你可以使用选择PID选项后在搜索框直接输入图片的PID进行搜索</p>
+                    <p>7.规则语句会被自动修正，所以您同样可以使用中文标点，如【可莉，兽耳｜泳装】</p>
+                    <p>8.请冲的稍微节制一些(doge)</p>
+                    <!--<p>9.网站支持添加以下GET参数以小幅度更改网站的显示效果：</p>
+                        <ul>
+                            <li>Proxy：Pixiv反代地址</li>
+                            <li>PixivAPI：Pixiv原图下载接口</li>
+                            <li>Size：图片大小，你可以使用值\"original\"以获取原图</li>
+                            <li>ShowTags：显示tag数量，你可以使用值\"0\"以获取全部Tag</li>
+                        </ul>
+                    <p>最近1小时API可用性：</p>
+                    iframe width='100%' src='https://api.lolicon.app/setu/availability.html' height='150' scrolling='no'>
+                    </iframe>
+                    <p>注：炸了说明有憨P在爬虫CC本站使用的API</p>-->
+                    <p>目前可以透露的情报：</p>
+                    <iframe width='100%' src='https://charts.mongodb.com/charts-setu-api-qxdzw/embed/charts?id=f973f61b-912b-4dd6-b00a-f9c52db92918&amp;attribution=false'>
+                    </iframe>
+                    <iframe width='100%' src='https://charts.mongodb.com/charts-setu-api-qxdzw/embed/charts?id=b23a40a5-8c50-48ae-a950-95c81f9b013c&amp;attribution=false'>
+                    </iframe>
+                    <p>注：R18作品占比约为25%</p>
+                    <footer id='footer'>
+                        <hr>
+                        <p>使用API：
+                            <a target='_blank' href='https://api.lolicon.app' style='color:#1E90FF'>神代绮凛的Lolicon.App随机涩图</a>
+                        </p>
+                        <p>在此感谢神代绮凛大佬您对人类进步做出的贡献，涩图即是人类进步的原动力！</p>
+                        <p class='copyright'>2022 &copy; Powered by 梓酱Azusa</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe id="result_iframe" name="result_iframe" style="display:none;"></iframe> 
+    <script type="text/javascript">
+        window.onload = async function () {
+            var logined = readCookie("logined");
+            if (logined == "true") {
+                window.location.href="main.html";
+            }
+            await getConfig();
+        }
+        function loginer() {
+            var license = document.getElementById("license").value;
+            if (license == window.config.setLicense) {
+                writeCookie("logined", "true");
+                window.location.href="index.html";
+                return;
+            }
+            alert("警告：内部许可码错误！");
+            window.location.href="login.html";
+        }
+    </script>
+    <script src="js/public.js"></script>
+</body>

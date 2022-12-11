@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta name='viewport' content='width=device-width,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+    <title>验证 | Search in the Lolicon.App V3 - Lolicon.App涩图检索工具3.0</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/verify.css">
+</head>
+<body style='margin:0px'>
+    <div id='overlay' class='overlay'>
+        <div class='text-bg'>
+            <div class='overlay-body'>
+                <p class='overlay-title'>您是否已满18岁?</p>
+                <p class='overlay-description'>以下内容的某些部分可能不适合
+                    <b>未满18岁</b>的人群查看，我们需要确认您的年龄以便于隐藏相关内容。</p>
+                <p class='overlay-description'>Some sections of the following may not be suitable for people
+                    <b>under the age of 18</b>, and we need to confirm your age in order to hide the content.</p>
+                <div class='overlay-buttons-wrapper'>
+                    <button id='accept-button' class='overlay-button' onclick="verifier()">已满18岁</button>
+                    <button id='decline-button' class='overlay-button' onclick="window.history.go(-1);">未满18岁</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var verified = readCookie("verified");
+            if (verified == "true") {
+                window.location.href="login.html";
+                return;
+            }
+        }
+        function verifier() {
+            writeCookie("verified", "true");
+            window.location.href="index.html";
+        }
+    </script>
+    <script src="js/public.js"></script>
+</body>
+</html>

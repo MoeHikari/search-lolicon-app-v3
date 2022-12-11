@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta name='viewport' content='width=device-width,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+    <title>Search in the Lolicon.App V3 - Lolicon.App涩图检索工具3.0</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <p>Redirecting...</p>
+    <script type="text/javascript">
+        window.onload = function () {
+            var verified = readCookie("verified");
+            if (verified != "true") {
+                window.location.href="verify.html";
+                return;
+            }
+            var logined = readCookie("logined");
+            if (logined != "true") {
+                window.location.href="login.html";
+                return;
+            }
+            window.location.href="main.html";
+        }
+    </script>
+    <script src="js/public.js"></script>
+</body>
