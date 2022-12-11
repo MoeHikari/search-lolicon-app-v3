@@ -52,6 +52,19 @@ $(function() {
         return setu.responseJSON;
     };
 });
+function isAvailableURL(url){
+    return new Promise(function(resolve, reject) {
+        var dom = document.createElement('link');
+        dom.href = url;
+        dom.rel = 'stylesheet';
+        document.head.appendChild(dom);
+        dom.onload = function() {
+            document.head.removeChild(dom);
+            resolve();
+        };
+        dom.onerror = reject;
+    });
+}
 async function runTool() {
     var keyword = document.getElementById("keyword").value;
     before = ['，', '｜', 'uid', 'pid', '：'];
@@ -73,7 +86,30 @@ async function runTool() {
     var setuObj = document.getElementById("setuObj");
     setuObj.innerHTML = null;
     if (r18 == 3) {
-        
+        var pid = keyword.replace(/[^\d]/g,' ');
+        var pixURL = "https://" + window.config.setPixivAPI + "/" + pid;
+        var fileTypeArr = ['.png', '.jpg', '.gif'];
+        var pageTypeArr = ['-' + number, '-1', ''];
+        var url = "";
+        try {
+            fileTypeArr.forEach(async function(fValue) {
+                pageTypeArr.forEach(async function(pValue) {
+                    url = pixURL + pValue + fValue;
+                    await isAvailableURL(url).then(function(){
+                        throw new Error('break forEach.');
+                    }, function(){
+                        url = "no url";
+                    });
+                });
+            });
+        } catch(e) {
+            console.log(e.message);
+        }
+        if (url == "no url") {
+            setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
+            return;
+        }
+        setuObj.innerHTML = "<div class='notice'><img src='" + url + "' width='100%'/></div><br>";
     } else {
         if (number > window.config.maxNumber) {
             number = window.config.maxNumber;
@@ -90,7 +126,7 @@ async function runTool() {
             var setuData = "keyword=" + keyword + "&";
         }
         setu = $().getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
-        if (setu == []) {
+        if (setu.length == 0) {
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
             return;
         }
