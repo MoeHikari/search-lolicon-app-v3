@@ -89,7 +89,6 @@ async function runTool() {
         } else {
             var setuData = "keyword=" + keyword + "&";
         }
-        console.log(setuData);
         setu = $().getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
         if (setu == []) {
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
