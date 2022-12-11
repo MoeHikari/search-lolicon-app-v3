@@ -10,6 +10,10 @@
     <p>Redirecting...</p>
     <script type="text/javascript">
         window.onload = function () {
+            var stop = isTencentAppBrowser();
+            if (stop == true) {
+                return;
+            }
             var verified = readCookie("verified");
             if (verified != "true") {
                 window.location.href="verify.html";
@@ -23,5 +27,6 @@
             window.location.href="main.html";
         }
     </script>
+    <script src="js/iTAB.js"></script>
     <script src="js/public.js"></script>
 </body>
