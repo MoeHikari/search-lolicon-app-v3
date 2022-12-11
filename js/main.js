@@ -70,6 +70,8 @@ async function runTool() {
     if (number == null) {
         number = 1;
     }
+    var setuObj = document.getElementById("setuObj");
+    setuObj.innerHTML = null;
     if (r18 == 3) {
         
     } else {
@@ -100,8 +102,6 @@ async function runTool() {
         var setuMode = "";
         var setuTag = "";
         var setuTagArr = [];
-        var setuObj = document.getElementById("setuObj");
-        setuObj.innerHTML = null;
         setu.forEach(function(value, index) {
             if (number != 1) {
                 setuNum = "【" + (index + 1) + "】";
