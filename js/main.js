@@ -10,7 +10,7 @@ window.onload = async function () {
         return;
     }
     await getConfig();
-    document.getElementById('bigimg').innerHTML = "<h3 style="text-align:center;">加载完成</h3><input id='submit' type='submit' value='Link Start !' onclick="openTools()">";
+    document.getElementById('bigimg').innerHTML = "<h3 style=\"text-align:center;\">加载完成</h3><input id='submit' type='submit' value='Link Start !' onclick=\"openTools()\">";
 };
 function openTools(){
     pathname = window.location.pathname;
