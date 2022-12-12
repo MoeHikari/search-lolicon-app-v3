@@ -86,7 +86,7 @@ async function runTool() {
     var setuObj = document.getElementById("setuObj");
     setuObj.innerHTML = null;
     if (r18 == 3) {
-        var pid = keyword.replace(/[^\d]/g,' ');
+        var pid = keyword.replace(/[^\d]/g,'');
         var pixURL = "https://" + window.config.setPixivAPI + "/" + pid;
         var fileTypeArr = ['.png', '.jpg', '.gif'];
         var pageTypeArr = ['-' + number, '-1', ''];
@@ -121,7 +121,7 @@ async function runTool() {
                 setuData = setuData + "tag=" + value + "&";
             });
         } else if (keyword.indexOf("UID:") != -1) {
-            var setuData = "uid=" + keyword.replace(/[^\d]/g,' ') + "&";
+            var setuData = "uid=" + keyword.replace(/[^\d]/g,'') + "&";
         } else {
             var setuData = "keyword=" + keyword + "&";
         }
