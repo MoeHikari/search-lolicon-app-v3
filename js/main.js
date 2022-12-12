@@ -10,6 +10,8 @@ window.onload = async function () {
         return;
     }
     await getConfig();
+    document.getElementById('loadNotice').innerHTML = "加载完成";
+    document.getElementById('linkStart').style = "visibility: true;";
 };
 function openTools(){
     pathname = window.location.pathname;
