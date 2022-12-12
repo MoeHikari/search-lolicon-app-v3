@@ -19,7 +19,7 @@ function openTools(){
         window.location.href = "main2.html";
     }
     var icon = document.querySelector('link[rel*="icon"]');
-    icon = window.config.htmlIcon;
+    icon.href = window.config.htmlIcon;
     document.getElementById('numberInfo').innerHTML = "数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value=1 min='1' max='" + window.config.maxNumber + "' />张";
     document.getElementById("imgLayer").style.display = "none";
     document.getElementById("imgBoxl").style.display = "none";
