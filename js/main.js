@@ -138,8 +138,8 @@ async function runTool() {
         var setuMode = "";
         var setuTag = "";
         var setuTagArr = [];
-        var setuAINote = "";
         setu.forEach(function(value, index) {
+            var setuAINote = "";
             if (number != 1) {
                 setuNum = "【" + (index + 1) + "】";
             }
