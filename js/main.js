@@ -43,7 +43,7 @@ $(function() {
     $.fn.getSetu = function(data) {
         var setu = $.ajax({
             type: "post",
-            url: "get.php",
+            url: "https://sla-v3.000webhostapp.com/get.php",
             data: {
                 "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
             },
