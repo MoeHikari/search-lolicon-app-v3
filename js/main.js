@@ -166,6 +166,7 @@ async function runTool() {
             }
             if (value['aiType'] == 2) {
                 setuAINote = "<br>提示：这是一幅AI绘制的作品";
+            }
             setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>" + setuOpInfo + "&ensp;<a href='" + setuDownload + "' target='_blank'><button id='download'>下载原图</button></a>" + setuMode + "<br>" + setuTag + setuAINote + "<br></p><img src='" + setuURL + "' width='100%'/></div><br>";
         });
     }
