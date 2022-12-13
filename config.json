@@ -1,10 +1,10 @@
 {
-    "setLicense": "123456",
-    "setProxy": "i.pixiv.re",
+    "setLicense": "20200928",
+    "setProxy": "pximg.moeloli.cyou",
     "setPixivAPI": "pixiv.re",
     "setSize": "regular",
     "setShowTags": 5,
     "maxNumber": 20,
     "hideR18": false,
-    "htmlIcon": ""
+    "htmlIcon": "./icon.ico"
 }
