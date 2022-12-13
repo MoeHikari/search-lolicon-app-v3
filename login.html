@@ -11,7 +11,7 @@
         <div class='text-bg'>
             <div class='input_control'>
                 <h3>
-                    <form action="" method="post" target="result_iframe" onsubmit="loginer()">
+                    <form action="index.html" method="post" target="result_iframe" onsubmit="loginer()">
                         <input id='license' type='password' name='license' placeholder='请输入内部许可码'>
                         <input id='submit' type='submit' value='登录'>
                     </form>
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <iframe id="result_iframe" name="result_iframe" style="display:none;"></iframe> 
+    <noscript><iframe id="result_iframe" name="result_iframe" style="display:none;"></iframe></noscript>
     <script type="text/javascript">
         window.onload = async function () {
             var logined = readCookie("logined");
