@@ -12,7 +12,7 @@
         <div class='text-bg'>
             <div class='input_control'>
                 <h3>
-                    <form action="" method="post" target="result_iframe" onsubmit="runTool()">
+                    <form action="index.html" method="post" target="result_iframe" onsubmit="runTool()">
                         <input id='keyword' type='keyword' name='keyword' placeholder='请输入搜索关键词'><br>
                         全年龄
                         <input id='radio0' type='radio' checked='checked' onclick="radioCheck1(0)">&emsp;&emsp;
@@ -37,7 +37,7 @@
             <h3 style="text-align:center;">加载中...</h3>
         </div>
     </div>
-    <iframe id="result_iframe" name="result_iframe" style="display:none;"></iframe>
+    <noscript><iframe id="result_iframe" name="result_iframe" style="display:none;"></iframe></noscript>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/public.js"></script>
