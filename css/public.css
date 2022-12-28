@@ -22,9 +22,19 @@
     padding:0;
     position:fixed;
 }
-.text-bg{
-    background-color:rgba(255, 255, 255, 0.6);
-    padding:24px;
+@media (prefers-color-scheme: light) {
+    .text-bg{
+        color:black;
+        background-color:rgba(255, 255, 255, 0.6);
+        padding:24px;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .text-bg{
+        color:white;
+        background-color:rgba(0, 0, 0, 0.6);
+        padding:24px;
+    }
 }
 .input_control{
     width:360px;
