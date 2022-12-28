@@ -72,10 +72,10 @@ input::-webkit-input-placeholder{
         background-color:rgba(245, 245, 245, 0.8);
         padding:2%5%
     }
-    .imgLayer{
+    #imgLayer{
         background-color:white;
     }
-    .imgBoxl{
+    #imgBoxl{
         color:black;
     }
 }
@@ -85,10 +85,10 @@ input::-webkit-input-placeholder{
         background-color:rgba(10, 10, 10, 0.8);
         padding:2%5%
     }
-    .imgLayer{
+    #imgLayer{
         background-color:black;
     }
-    .imgBoxl{
+    #imgBoxl{
         color:white;
     }
 }
