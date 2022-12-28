@@ -23,6 +23,10 @@
     position:fixed;
 }
 @media (prefers-color-scheme: light) {
+    body{
+        color:black;
+        background:white;
+    }
     .text-bg{
         color:black;
         background-color:rgba(255, 255, 255, 0.6);
@@ -30,6 +34,10 @@
     }
 }
 @media (prefers-color-scheme: dark) {
+    body{
+        color:white;
+        background:black;
+    }
     .text-bg{
         color:white;
         background-color:rgba(0, 0, 0, 0.6);
