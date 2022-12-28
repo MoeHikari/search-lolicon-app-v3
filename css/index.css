@@ -73,10 +73,10 @@ input::-webkit-input-placeholder{
         padding:2%5%
     }
     #imgLayer{
-        background-color:white;
+        background:white !important;
     }
     #imgBoxl{
-        color:black;
+        color:black !important;
     }
 }
 @media (prefers-color-scheme: dark) {
@@ -86,10 +86,10 @@ input::-webkit-input-placeholder{
         padding:2%5%
     }
     #imgLayer{
-        background-color:black;
+        background:black !important;
     }
     #imgBoxl{
-        color:white;
+        color:white !important;
     }
 }
 p{
