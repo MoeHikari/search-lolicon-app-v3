@@ -43,7 +43,7 @@ $(function() {
     $.fn.getSetu = function(data) {
         var setu = $.ajax({
             type: "post",
-            url: "https://sla-v3.000webhostapp.com/get.php",
+            url: "get.php",
             data: {
                 "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
             },
@@ -139,6 +139,11 @@ async function runTool() {
         var setuTag = "";
         var setuTagArr = [];
         setu.forEach(function(value, index) {
+            setuTagArr = value['tags'];
+            if (window.config.hideR18 == true && setuTagArr.indexOf("R-18") != -1) {
+                setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>404 Not Found</p></div><br>";
+                return;
+            }
             var setuAINote = "";
             if (number != 1) {
                 setuNum = "【" + (index + 1) + "】";
@@ -146,9 +151,11 @@ async function runTool() {
             setuURL = value['urls'][window.config.setSize];
             setuOpInfo = setuNum + "标题：" + value['title'] + "<br>画师：" + value['author'] + "(" + value['uid'] + ")<br>PID：" + value['pid'] + "(第" + (value['p'] + 1) + "页)";
             setuDownload = value['urls']['original'];
-            setuMode = "<br>是否为R18图：" + value['r18'];
+            setuMode = "";
+            if (window.config.hideR18 != true) {
+                setuMode = "<br>是否为R18图：" + value['r18'];
+            }
             setuTag = "图片Tag：";
-            setuTagArr = value['tags'];
             try {
                 setuTagArr.forEach(function(tagValue, tagIndex) {
                     setuTag = setuTag + tagValue;
