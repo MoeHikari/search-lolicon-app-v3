@@ -13,11 +13,11 @@ window.onload = async function () {
     document.getElementById('bigimg').innerHTML = "<h3 style=\"text-align:center;\">加载完成</h3><input id='submit' type='submit' value='Link Start !' onclick=\"openTools()\">";
     var img = new Image();
     img.src = "https://sla-v3.000webhostapp.com/rb/api.php?sort=random";
-    if(img.width == 0){
+    if (img.width == 0) {
         var fixBg = document.createElement("style");
         fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;}";
         document.body.appendChild(fixBg);
-    };
+    }
 };
 function openTools(){
     pathname = window.location.pathname;
