@@ -70,7 +70,8 @@ input::-webkit-input-placeholder{
     .notice{
         margin:10%auto0;
         background-color:rgba(245, 245, 245, 0.8);
-        padding:2%5%
+        padding:2%5%;
+        border-radius:1rem;
     }
     #imgLayer{
         background:white !important;
@@ -83,7 +84,8 @@ input::-webkit-input-placeholder{
     .notice{
         margin:10%auto0;
         background-color:rgba(10, 10, 10, 0.8);
-        padding:2%5%
+        padding:2%5%;
+        border-radius:1rem;
     }
     #imgLayer{
         background:black !important;
