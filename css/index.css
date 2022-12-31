@@ -115,7 +115,7 @@ p{
         transform:translateX(-50%) translateY(-50%);
     }
 }
-@media only screen and (min-width:424px){
+@media screen and (min-width:424px){
     #bigimg{
         position:fixed;
         width:360px;
