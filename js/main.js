@@ -158,7 +158,6 @@ async function runTool() {
             setuURL = value['urls'][window.config.setSize];
             setuOpInfo = setuNum + "标题：" + value['title'] + "<br>画师：" + value['author'] + "(" + value['uid'] + ")<br>PID：" + value['pid'] + "(第" + (value['p'] + 1) + "页)";
             setuDownload = value['urls']['original'];
-            setuMode = "";
             if (window.config.hideR18 != true && window.filename != "main2.html") {
                 setuMode = "<br>是否为R18图：" + value['r18'];
             }
