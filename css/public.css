@@ -30,6 +30,7 @@
         padding:24px;
         border-radius:8px;
         backdrop-filter:blur(4px);
+        -webkit-backdrop-filter:blur(4px);
     }
 }
 @media (prefers-color-scheme:dark){
@@ -43,6 +44,7 @@
         padding:24px;
         border-radius:8px;
         backdrop-filter:blur(4px);
+        -webkit-backdrop-filter:blur(4px);
     }
 }
 @media only screen and (max-width:408px){
