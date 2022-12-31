@@ -47,13 +47,13 @@
         -webkit-backdrop-filter:blur(4px);
     }
 }
-@media only screen and (max-width:408px){
+@media only screen and (max-width:424px){
     .input_control{
-        width:calc(100vw - 48px);
+        width:calc(100vw - 64px);
         margin:20px auto;
     }
 }
-@media only screen and (min-width:408px){
+@media only screen and (min-width:424px){
     .input_control{
         width:360px;
         margin:20px auto;
