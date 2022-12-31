@@ -19,7 +19,7 @@
     padding:0;
     position:fixed;
 }
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme:light) {
     body{
         color:black;
         background:white;
@@ -32,7 +32,7 @@
         backdrop-filter:blur(3px);
     }
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme:dark) {
     body{
         color:white;
         background:black;
@@ -45,7 +45,15 @@
         backdrop-filter:blur(3px);
     }
 }
-.input_control{
-    width:360px;
-    margin:20px auto;
+@media only screen and (max-width:360px) {
+    .input_control{
+        width:100vw;
+        margin:20px auto;
+    }
+}
+@media only screen and (min-width:360px) {
+    .input_control{
+        width:360px;
+        margin:20px auto;
+    }
 }
