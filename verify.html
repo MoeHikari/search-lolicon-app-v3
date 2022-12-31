@@ -29,6 +29,13 @@
                 window.location.href="login.html";
                 return;
             }
+            var img = new Image();
+            img.src = "https://sla-v3.000webhostapp.com/rb/api.php?sort=random";
+            if(img.width == 0){
+                var fixBg = document.createElement("style");
+                fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;}";
+                document.body.appendChild(fixBg);
+            }
         }
         function verifier() {
             writeCookie("verified", "true");
