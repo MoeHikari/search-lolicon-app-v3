@@ -27,7 +27,7 @@ input[id='number']{
     color:#6a6f77;
     -web-kit-appearance:none;
     -moz-appearance:none;
-    display:block;
+    display:inline;
     text-decoration:none;
 }
 input[id='number']:focus{
