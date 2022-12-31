@@ -15,7 +15,6 @@
     top:0;
     left:0;
     z-index:-1;
-    -webkit-filter:blur(3px);
     margin:0;
     padding:0;
     position:fixed;
@@ -30,7 +29,7 @@
         background-color:rgba(255, 255, 255, 0.6);
         padding:24px;
         border-radius:1rem;
-        backdrop-filter:blur(1rem);
+        backdrop-filter:blur(3px);
     }
 }
 @media (prefers-color-scheme: dark) {
@@ -43,7 +42,7 @@
         background-color:rgba(0, 0, 0, 0.6);
         padding:24px;
         border-radius:1rem;
-        backdrop-filter:blur(1rem);
+        backdrop-filter:blur(3px);
     }
 }
 .input_control{
