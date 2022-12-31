@@ -1,4 +1,4 @@
-input[id='license'],#btn1,#btn2{
+input[id='license'],input[id='keyword']{
     box-sizing:border-box;
     text-align:center;
     font-size:1.4em;
@@ -16,22 +16,6 @@ input[id='license'],#btn1,#btn2{
 }
 input[id='license']:focus{
     border:1px solid #ff7496;
-}
-input[id='keyword'],#btn1,#btn2{
-    box-sizing:border-box;
-    text-align:center;
-    font-size:1.4em;
-    height:2.7em;
-    border-radius:4px;
-    border:1px solid #c8cccf;
-    color:#6a6f77;
-    -web-kit-appearance:none;
-    -moz-appearance:none;
-    display:block;
-    outline:0;
-    padding:0 1em;
-    text-decoration:none;
-    width:100%;
 }
 input[id='keyword']:focus{
     border:1px solid #ff7496;
@@ -57,7 +41,7 @@ input[id='submit']:hover{
     background:#5599FF;
     -webkit-appearance:none;
 }
-::-moz-placeholder {
+::-moz-placeholder{
     color:#6a6f77;
 }
 ::-moz-placeholder{
@@ -66,7 +50,7 @@ input[id='submit']:hover{
 input::-webkit-input-placeholder{
     color:#6a6f77;
 }
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: light){
     .notice{
         margin:10%auto0;
         background-color:rgba(245, 245, 245, 0.8);
@@ -80,7 +64,7 @@ input::-webkit-input-placeholder{
         color:black !important;
     }
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark){
     .notice{
         margin:10%auto0;
         background-color:rgba(10, 10, 10, 0.8);
@@ -114,7 +98,7 @@ p{
     left:50%;
     transform:translateX(-50%) translateY(-50%);
 }
-@media only screen and (max-width:408px) {
+@media only screen and (max-width:408px){
     #imgBoxl{
         display:block;
         width:calc(100vw - 48px);
@@ -124,7 +108,7 @@ p{
         margin:5%;
     }
 }
-@media only screen and (min-width:408px) {
+@media only screen and (min-width:408px){
     #imgBoxl{
         display:block;
         width:360px;
