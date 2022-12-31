@@ -31,6 +31,7 @@
         color:black;
         background-color:rgba(255, 255, 255, 0.6);
         padding:24px;
+        border-radius:1rem;
     }
 }
 @media (prefers-color-scheme: dark) {
@@ -42,6 +43,7 @@
         color:white;
         background-color:rgba(0, 0, 0, 0.6);
         padding:24px;
+        border-radius:1rem;
     }
 }
 .input_control{
