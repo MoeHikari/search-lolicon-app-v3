@@ -15,7 +15,7 @@ window.onload = async function () {
     img.src = "https://dev.iw233.cn/api.php?sort=random";
     if (img.width == 0) {
         var fixBg = document.createElement("style");
-        fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;}";
+        fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;background-size:cover;background-position:center 0;}";
         document.body.appendChild(fixBg);
     }
 };
