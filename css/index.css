@@ -114,12 +114,25 @@ p{
     left:50%;
     transform:translateX(-50%) translateY(-50%);
 }
-#imgBoxl{
-    display:block;
-    height:100%;
-    z-index:5;
-    position:fixed;
-    margin:5%;
+@media only screen and (max-width:408px) {
+    #imgBoxl{
+        display:block;
+        width:calc(100vw - 48px);
+        height:100%;
+        z-index:5;
+        position:fixed;
+        margin:5%;
+    }
+}
+@media only screen and (min-width:408px) {
+    #imgBoxl{
+        display:block;
+        width:360px;
+        height:100%;
+        z-index:5;
+        position:fixed;
+        margin:5%;
+    }
 }
 #bigimg{
     position:fixed;
