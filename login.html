@@ -55,6 +55,13 @@
                 window.location.href="main.html";
             }
             await getConfig();
+            var img = new Image();
+            img.src = "https://dev.iw233.cn/api.php?sort=random";
+            if (img.width == 0) {
+                var fixBg = document.createElement("style");
+                fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;}";
+                document.body.appendChild(fixBg);
+            }
         }
         function loginer() {
             var license = document.getElementById("license").value;
