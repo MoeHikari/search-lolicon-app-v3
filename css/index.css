@@ -40,7 +40,7 @@ input[id='number']:focus{
     border:1px solid #ff7496;
 }
 input[id='submit']{
-    width:360px;
+    width:100%;
     margin:20px auto;
     height:40px;
     border-width:0px;
