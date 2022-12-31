@@ -50,7 +50,7 @@ input[id='submit']:hover{
 input::-webkit-input-placeholder{
     color:#6a6f77;
 }
-@media (prefers-color-scheme: light){
+@media (prefers-color-scheme:light){
     .notice{
         margin:10%auto0;
         background-color:rgba(245, 245, 245, 0.8);
@@ -64,7 +64,7 @@ input::-webkit-input-placeholder{
         color:black !important;
     }
 }
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme:dark){
     .notice{
         margin:10%auto0;
         background-color:rgba(10, 10, 10, 0.8);
