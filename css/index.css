@@ -98,31 +98,31 @@ p{
     left:50%;
     transform:translateX(-50%) translateY(-50%);
 }
+#imgBoxl{
+    display:block;
+    height:100%;
+    z-index:5;
+    position:fixed;
+    margin:5%;
+}
 @media only screen and (max-width:408px){
-    #imgBoxl{
-        display:block;
-        width:calc(100vw - 48px);
-        height:100%;
-        z-index:5;
+    #bigimg{
         position:fixed;
-        margin:5%;
+        width:calc(100vw - 48px);
+        width:360px;
+        top:50%;
+        left:50%;
+        transform:translateX(-50%) translateY(-50%);
     }
 }
 @media only screen and (min-width:408px){
-    #imgBoxl{
-        display:block;
-        width:360px;
-        height:100%;
-        z-index:5;
+    #bigimg{
         position:fixed;
-        margin:5%;
+        width:360px;
+        top:50%;
+        left:50%;
+        transform:translateX(-50%) translateY(-50%);
     }
-}
-#bigimg{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translateX(-50%) translateY(-50%);
 }
 button[id='download']{
     color:rgb(0, 0, 0);
