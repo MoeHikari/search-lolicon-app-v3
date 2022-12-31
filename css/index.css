@@ -105,7 +105,7 @@ p{
     position:fixed;
     margin:5%;
 }
-@media only screen and (max-width:408px){
+@media only screen and (max-width:424px){
     #bigimg{
         position:fixed;
         width:calc(100vw - 64px);
@@ -115,7 +115,7 @@ p{
         transform:translateX(-50%) translateY(-50%);
     }
 }
-@media only screen and (min-width:408px){
+@media only screen and (min-width:424px){
     #bigimg{
         position:fixed;
         width:360px;
