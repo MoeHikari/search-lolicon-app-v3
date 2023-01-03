@@ -1,3 +1,4 @@
+var submitBlock = false;
 window.onload = async function () {
     var verified = readCookie("verified");
     if (verified != "true") {
@@ -47,36 +48,36 @@ function radioCheck1(id) {
     }
 }
 function radioCheck2() {
-    document.getElementById('numberInfo').innerHTML = "";
+    document.getElementById('numberInfo').innerHTML = "<br>注：此工具最多可获取的图片页数为100";
     for (var i=0; i<=2; i++) {
         document.getElementById('radio' + i).checked = null;
     }
 }
-$(function() {
-    $.fn.getSetu = function(data) {
-        var setu = $.ajax({
-            type: "post",
-            url: "https://sla-v3.000webhostapp.com/get.php",
-            data: {
-                "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
-            },
-            async: false,
-            dataType: "json"
-        });
-        return setu.responseJSON;
-    };
-});
+function getSetu(data) {
+    var setu = $.ajax({
+        type: "post",
+        url: "https://sla-v3.000webhostapp.com/get.php",
+        data: {
+            "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
+        },
+        async: false,
+        dataType: "json"
+    });
+    return setu.responseJSON;
+}
 function isAvailableURL(url){
     return new Promise(function(resolve, reject) {
-        var dom = document.createElement('link');
-        dom.href = url;
-        dom.rel = 'stylesheet';
-        document.head.appendChild(dom);
-        dom.onload = function() {
-            document.head.removeChild(dom);
-            resolve();
-        };
-        dom.onerror = reject;
+        var dom = $.ajax({
+            type: "HEAD",
+            url: url,
+            async: true,
+            success: function(r) {
+                resolve();
+            },
+            error: function(e) {
+                reject();
+            }
+        });
     });
 }
 async function runTool() {
@@ -93,38 +94,75 @@ async function runTool() {
             break;
         }
     }
-    var number = document.getElementById("number").value;
-    if (number == null) {
-        number = 1;
-    }
     var setuObj = document.getElementById("setuObj");
-    setuObj.innerHTML = null;
+    if (submitBlock == false) {
+        setuObj.innerHTML = null;
+    }
     if (r18 == 3) {
+        if (submitBlock == true) {
+            createToast("warning", "请稍等，上一张图片还未加载完成", true, 3);
+            return;
+        }
+        createToast("info", "请稍等，可能需要一点时间加载", true, 3);
+        submitBlock = true;
         var pid = keyword.replace(/[^\d]/g,'');
         var pixURL = "https://" + window.config.setPixivAPI + "/" + pid;
-        var fileTypeArr = ['.png', '.jpg', '.gif'];
-        var pageTypeArr = ['-' + number, '-1', ''];
+        var pageTypeArr = ['-1.png', '.png', '-1.jpg', '.jpg', '-1,gif', '.gif'];
         var url = "";
-        try {
-            fileTypeArr.forEach(async function(fValue) {
-                pageTypeArr.forEach(async function(pValue) {
-                    url = pixURL + pValue + fValue;
-                    await isAvailableURL(url).then(function(){
-                        throw new Error('break forEach.');
-                    }, function(){
-                        url = "no url";
-                    });
-                });
+        var finish = false;
+        var moreImg = false;
+        var imgType = ".png";
+        for (let pti = 0; pti < 6; pti++) {
+            url = pixURL + pageTypeArr[pti];
+            await isAvailableURL(url).then(function() {
+                finish = true;
+                if (pageTypeArr[pti].indexOf("-1") != -1) {
+                    moreImg = true;
+                    imgType = (
+                        pageTypeArr[pti] == "-1.png" && ".png"
+                    ) || (
+                        pageTypeArr[pti] == "-1.jpg" && ".jpg"
+                    ) || (
+                        pageTypeArr[pti] == "-1.gif" && ".gif"
+                    );
+                }
+            }, function() {
+                if (pti >= 5) {
+                    url = "no url";
+                    finish = true;
+                } else {
+                    finish = false;
+                }
             });
-        } catch(e) {
-            console.log(e.message);
+            if (finish == true) {
+                break;
+            }
         }
         if (url == "no url") {
             createToast("error", "没有搜索结果", true, 3);
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
             return;
         }
-        setuObj.innerHTML = "<div class='notice'><img src='" + url + "' width='100%'/></div><br>";
+        if (moreImg == true) {
+            setuObj.innerHTML = "<div class='notice'>Page.1<br><img src='" + url + "' width='100%'/></div><br>";
+            createToast("info", "请稍等，还有更多图片需要加载", true, 3);
+            finish = false;
+            for (let imgp = 2; imgp < 101; imgp++) {
+                url = pixURL + "-" + String(imgp) + imgType;
+                await isAvailableURL(url).then(function() {
+                    setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'>Page." + String(imgp) + "<br><img src='" + url + "' width='100%'/></div><br>";
+                }, function() {
+                    finish = true;
+                });
+                if (finish == true) {
+                    break;
+                }
+            }
+        } else {
+            setuObj.innerHTML = "<div class='notice'><img src='" + url + "' width='100%'/></div><br>";
+        }
+        createToast("success", "加载完成", true, 3);
+        submitBlock = false;
     } else {
         if (number > window.config.maxNumber) {
             number = window.config.maxNumber;
@@ -145,8 +183,8 @@ async function runTool() {
         } else {
             var setuData = "keyword=" + keyword + "&";
         }
-        setu = $().getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
-        if (setu.length == 0) {
+        var setuInfo = await getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
+        if (setuInfo.length == 0) {
             createToast("error", "没有搜索结果", true, 3);
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
             return;
@@ -159,7 +197,7 @@ async function runTool() {
         var setuTag = "";
         var setuTagArr = [];
         var loadError = 0;
-        setu.forEach(function(value, index) {
+        setuInfo.forEach(function(value, index) {
             setuTagArr = value['tags'];
             if ((window.config.hideR18 == true || window.filename == "main2.html") && setuTagArr.indexOf("R-18") != -1) {
                 setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>404 Not Found</p></div><br>";
