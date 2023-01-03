@@ -53,19 +53,21 @@ function radioCheck2() {
         document.getElementById('radio' + i).checked = null;
     }
 }
-function getSetu(data) {
-    var setu = $.ajax({
-        type: "post",
-        url: "https://sla-v3.000webhostapp.com/get.php",
-        data: {
-            "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
-        },
-        async: false,
-        dataType: "json"
-    });
-    return setu.responseJSON;
-}
-function isAvailableURL(url){
+$(function() {
+    $.fn.getSetu = function(data) {
+        var setu = $.ajax({
+            type: "post",
+            url: "https://sla-v3.000webhostapp.com/get.php",
+            data: {
+                "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
+            },
+            async: false,
+            dataType: "json"
+        });
+        return setu.responseJSON;
+    };
+});
+function isAvailableURL(url) {
     return new Promise(function(resolve, reject) {
         var tester = $.ajax({
             type: "HEAD",
@@ -184,7 +186,7 @@ async function runTool() {
         } else {
             var setuData = "keyword=" + keyword + "&";
         }
-        var setuInfo = await getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
+        var setuInfo = $().getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
         if (setuInfo.length == 0) {
             createToast("error", "没有搜索结果", true, 3);
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
