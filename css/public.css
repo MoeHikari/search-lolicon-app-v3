@@ -2,6 +2,9 @@
 body{
     font-family:'Poppins', sans-serif;
 }
+input{
+    font-family:'Poppins', sans-serif;
+}
 .overlay{
     z-index:2;
     display:flex;
