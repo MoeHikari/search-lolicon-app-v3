@@ -67,7 +67,7 @@ function getSetu(data) {
 }
 function isAvailableURL(url){
     return new Promise(function(resolve, reject) {
-        var dom = $.ajax({
+        var tester = $.ajax({
             type: "HEAD",
             url: url,
             async: true,
