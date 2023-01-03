@@ -125,14 +125,18 @@ async function runTool() {
         if (number > window.config.maxNumber) {
             number = window.config.maxNumber;
         }
-        if (keyword.indexOf(",") != -1 || keyword.indexOf("|") != -1) {
+        var judgments = [keyword.indexOf(","), keyword.indexOf("|"), keyword.indexOf("UID:")];
+        if (judgments != [-1, -1, -1]) {
             var setuValue = keyword.split(',');
             var setuData = "";
             setuValue.forEach(function(value) {
+                if (value.indexOf("UID:") != -1) {
+                    var uidData = uidData + "uid=" + value.replace(/[^\d]/g,'') + "&";
+                    return;
+                }
                 setuData = setuData + "tag=" + value + "&";
             });
-        } else if (keyword.indexOf("UID:") != -1) {
-            var setuData = "uid=" + keyword.replace(/[^\d]/g,'') + "&";
+            setuData = setuData + uidData;
         } else {
             var setuData = "keyword=" + keyword + "&";
         }
