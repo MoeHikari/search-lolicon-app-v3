@@ -56,7 +56,7 @@ function radioCheck2() {
 function getSetu(data) {
     var setu = $.ajax({
         type: "post",
-        url: "https://sla-v3.000webhostapp.com/get.php",
+        url: "get.php",
         data: {
             "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
         },
@@ -67,7 +67,7 @@ function getSetu(data) {
 }
 function isAvailableURL(url){
     return new Promise(function(resolve, reject) {
-        var dom = $.ajax({
+        var tester = $.ajax({
             type: "HEAD",
             url: url,
             async: true,
@@ -185,7 +185,6 @@ async function runTool() {
         } else {
             var setuData = "keyword=" + keyword + "&";
         }
-        console.log(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize);
         var setuInfo = getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
         if (setuInfo.length == 0) {
             createToast("error", "没有搜索结果", true, 3);
