@@ -40,7 +40,7 @@ function radioCheck1(id) {
     } else {
         document.getElementById('numberInfo').innerHTML = "<br>获取数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='1' min='1' max='" + window.config.maxNumber + "' />张";
     }
-    for (var i=0; i<=3; i++) {
+    for (var i = 0; i <= 3; i++) {
         if (i == id) {
             continue;
         }
@@ -49,25 +49,23 @@ function radioCheck1(id) {
 }
 function radioCheck2() {
     document.getElementById('numberInfo').innerHTML = "<br>注：此工具最多可获取的图片页数为100";
-    for (var i=0; i<=2; i++) {
+    for (var i = 0; i <= 2; i++) {
         document.getElementById('radio' + i).checked = null;
     }
 }
-$(function() {
-    $.fn.getSetu = function(data) {
-        var setu = $.ajax({
-            type: "post",
-            url: "https://sla-v3.000webhostapp.com/get.php",
-            data: {
-                "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
-            },
-            async: false,
-            dataType: "json"
-        });
-        return setu.responseJSON;
-    };
-});
-function isAvailableURL(url) {
+function getSetu(data) {
+    var setu = $.ajax({
+        type: "post",
+        url: "https://sla-v3.000webhostapp.com/get.php",
+        data: {
+            "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
+        },
+        async: false,
+        dataType: "json"
+    });
+    return setu.responseJSON;
+}
+function isAvailableURL(url){
     return new Promise(function(resolve, reject) {
         var tester = $.ajax({
             type: "HEAD",
@@ -89,7 +87,7 @@ async function runTool() {
     before.forEach(function(value, index) {
         keyword = keyword.replace(value, after[index]);
     });
-    for (var i=0; i<=3; i++) {
+    for (var i = 0; i <= 3; i++) {
         var radio = document.getElementById('radio' + i);
         if (radio.checked == true) {
             var r18 = i;
@@ -167,6 +165,7 @@ async function runTool() {
         createToast("success", "加载完成", true, 3);
         submitBlock = false;
     } else {
+        var number = document.getElementById("number");
         if (number > window.config.maxNumber) {
             number = window.config.maxNumber;
         }
@@ -186,7 +185,7 @@ async function runTool() {
         } else {
             var setuData = "keyword=" + keyword + "&";
         }
-        var setuInfo = $().getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
+        var setuInfo = getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
         if (setuInfo.length == 0) {
             createToast("error", "没有搜索结果", true, 3);
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
