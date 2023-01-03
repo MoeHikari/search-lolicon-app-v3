@@ -29,6 +29,7 @@ function openTools(){
     icon.href = window.config.htmlIcon;
     document.getElementById('numberInfo').innerHTML = "数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='1' min='1' max='" + window.config.maxNumber + "' />张";
     runTool();
+    createToast("success", "欢迎使用！", true, 3);
     document.getElementById("imgLayer").style.display = "none";
     document.getElementById("imgBoxl").style.display = "none";
 }

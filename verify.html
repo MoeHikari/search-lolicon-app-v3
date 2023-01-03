@@ -5,6 +5,8 @@
     <title>验证 | Search in the Lolicon.App V3 - Lolicon.App涩图检索工具3.0</title>
     <link rel="stylesheet" type="text/css" href="css/public.css">
     <link rel="stylesheet" type="text/css" href="css/verify.css">
+    <link rel="stylesheet" type="text/css" href="css/toast.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body style='margin:0px;'>
     <div id='overlay' class='overlay'>
@@ -26,7 +28,7 @@
         window.onload = function () {
             var verified = readCookie("verified");
             if (verified == "true") {
-                window.location.href="login.html";
+                window.location.href = "index.html";
                 return;
             }
             var img = new Image();
@@ -38,10 +40,14 @@
             }
         }
         function verifier() {
-            writeCookie("verified", "true");
-            window.location.href="index.html";
+            createToast("success", "验证成功！", true, 3);
+            setTimeout(() => {
+                writeCookie("verified", "true");
+                window.location.href = "index.html";
+            }, 2500);
         }
     </script>
     <script src="js/public.js"></script>
+    <script src="js/toast.js" defer></script>
 </body>
 </html>

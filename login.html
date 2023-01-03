@@ -5,6 +5,8 @@
     <title>登录 | Search in the Lolicon.App V3 - Lolicon.App涩图检索工具3.0</title>
     <link rel="stylesheet" type="text/css" href="css/public.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/toast.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body style='margin:0px;'>
     <div id='overlay' class='overlay' style="overflow:hidden;">
@@ -52,7 +54,7 @@
         window.onload = async function () {
             var logined = readCookie("logined");
             if (logined == "true") {
-                window.location.href="main.html";
+                window.location.href = "index.html";
             }
             await getConfig();
             var img = new Image();
@@ -66,13 +68,17 @@
         function loginer() {
             var license = document.getElementById("license").value;
             if (license == window.config.setLicense) {
-                writeCookie("logined", "true");
-                window.location.href="index.html";
+                createToast("success", "登录成功！", true, 3);
+                setTimeout(() => {
+                    writeCookie("logined", "true");
+                    window.location.href = "index.html";
+                }, 2500);
                 return;
             }
-            alert("警告：内部许可码错误！");
-            window.location.href="login.html";
+            createToast("error", "内部许可码错误！", true, 3);
+            document.getElementById('license').value = null;
         }
     </script>
     <script src="js/public.js"></script>
+    <script src="js/toast.js" defer></script>
 </body>
