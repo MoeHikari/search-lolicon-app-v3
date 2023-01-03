@@ -102,7 +102,7 @@ async function runTool() {
     }
     if (r18 == 3) {
         if (submitBlock == true) {
-            createToast("warning", "请稍等，上一张图片还未加载完成", true, 3);
+            createToast("warning", "请稍等，上一张图片还未完成", true, 3);
             return;
         }
         createToast("info", "请稍等，可能需要一点时间加载", true, 3);
