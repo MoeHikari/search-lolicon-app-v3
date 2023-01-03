@@ -34,7 +34,11 @@ function openTools(){
     document.getElementById("imgBoxl").style.display = "none";
 }
 function radioCheck1(id) {
-    document.getElementById('numberInfo').innerHTML = "<br>获取数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='" + document.getElementById('number').value + "' min='1' max='" + window.config.maxNumber + "' />张";
+    if (typeof document.getElementById('number').value === 'undefined') {
+        document.getElementById('numberInfo').innerHTML = "<br>获取数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='1' min='1' max='" + window.config.maxNumber + "' />张";
+    } else {
+        document.getElementById('numberInfo').innerHTML = "<br>获取数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='" + document.getElementById('number').value + "' min='1' max='" + window.config.maxNumber + "' />张";
+    }
     for (var i=0; i<=3; i++) {
         if (i == id) {
             continue;
