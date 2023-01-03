@@ -157,8 +157,8 @@ async function runTool() {
                 setuNum = "【" + (index + 1) + "】";
             }
             setuURL = value['urls'][window.config.setSize];
-            setuOpInfo = setuNum + "标题：" + value['title'] + "&ensp;<a href='" + setuDownload + "' target='_blank'><button id='download'>下载原图</button></a>" + "<br>画师：" + value['author'] + "(" + value['uid'] + ")<br>PID：" + value['pid'] + "(第" + (value['p'] + 1) + "页)";
             setuDownload = value['urls']['original'];
+            setuOpInfo = setuNum + "标题：" + value['title'] + "&ensp;<a href='" + setuDownload + "' target='_blank'><button id='download'>下载原图</button></a>" + "<br>画师：" + value['author'] + "(" + value['uid'] + ")<br>PID：" + value['pid'] + "(第" + (value['p'] + 1) + "页)";
             if (window.config.hideR18 != true && window.filename != "main2.html") {
                 setuMode = "<br>是否为R18图：" + value['r18'];
             }
