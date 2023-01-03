@@ -188,7 +188,7 @@ async function runTool() {
             }
             setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>" + setuOpInfo + setuMode + "<br>" + setuTag + setuAINote + "<br></p><img src='" + setuURL + "' width='100%'/></div><br>";
         });
-        if (loadError = true) {
+        if (loadError == true) {
             createToast("warning", "部分图片加载失败", true, 3);
             loadError = false;
         }
