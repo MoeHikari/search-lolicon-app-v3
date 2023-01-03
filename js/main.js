@@ -149,12 +149,12 @@ async function runTool() {
         var setuMode = "";
         var setuTag = "";
         var setuTagArr = [];
-        var loadError = false;
+        var loadError = 0;
         setu.forEach(function(value, index) {
             setuTagArr = value['tags'];
             if ((window.config.hideR18 == true || window.filename == "main2.html") && setuTagArr.indexOf("R-18") != -1) {
                 setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>404 Not Found</p></div><br>";
-                loadError = true;
+                loadError += 1;
                 return;
             }
             var setuAINote = "";
@@ -188,9 +188,14 @@ async function runTool() {
             }
             setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>" + setuOpInfo + setuMode + "<br>" + setuTag + setuAINote + "<br></p><img src='" + setuURL + "' width='100%'/></div><br>";
         });
-        if (loadError == true) {
-            createToast("warning", "部分图片加载失败", true, 3);
-            loadError = false;
+        if (loadError != 0) {
+            if (setu.length >= 2 && loadError < setu.length) {
+                createToast("warning", "部分图片加载失败", true, 3);
+                loadError = 0;
+            } else {
+                createToast("error", "图片加载失败", true, 3);
+                loadError = 0;
+            }
         }
     }
 }
