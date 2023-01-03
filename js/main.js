@@ -27,14 +27,14 @@ function openTools(){
     }
     var icon = document.querySelector('link[rel*="icon"]');
     icon.href = window.config.htmlIcon;
-    document.getElementById('numberInfo').innerHTML = "数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='1' min='1' max='" + window.config.maxNumber + "' />张";
+    document.getElementById('numberInfo').innerHTML = "获取数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='1' min='1' max='" + window.config.maxNumber + "' />张";
     runTool();
     createToast("success", "欢迎使用！", true, 3);
     document.getElementById("imgLayer").style.display = "none";
     document.getElementById("imgBoxl").style.display = "none";
 }
 function radioCheck1(id) {
-    document.getElementById('numberInfo').innerHTML = "数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='" + document.getElementById('number').value + "' min='1' max='" + window.config.maxNumber + "' />张";
+    document.getElementById('numberInfo').innerHTML = "获取数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='" + document.getElementById('number').value + "' min='1' max='" + window.config.maxNumber + "' />张";
     for (var i=0; i<=3; i++) {
         if (i == id) {
             continue;
@@ -43,7 +43,7 @@ function radioCheck1(id) {
     }
 }
 function radioCheck2() {
-    document.getElementById('numberInfo').innerHTML = "页码：<input id='number' type='number' name='number' value='" + document.getElementById('number').value + "' min='1' max='2147483647' />页";
+    document.getElementById('numberInfo').innerHTML = "";
     for (var i=0; i<=2; i++) {
         document.getElementById('radio' + i).checked = null;
     }
