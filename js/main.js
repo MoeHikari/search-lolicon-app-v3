@@ -129,9 +129,10 @@ async function runTool() {
         if (judgments != [-1, -1, -1]) {
             var setuValue = keyword.split(',');
             var setuData = "";
+            var uidData = "";
             setuValue.forEach(function(value) {
                 if (value.indexOf("UID:") != -1) {
-                    var uidData = uidData + "uid=" + value.replace(/[^\d]/g,'') + "&";
+                    uidData = uidData + "uid=" + value.replace(/[^\d]/g,'') + "&";
                     return;
                 }
                 setuData = setuData + "tag=" + value + "&";
