@@ -1,8 +1,5 @@
 @import './google-font.css';
-body{
-    font-family:'Poppins', sans-serif;
-}
-input{
+body,input,button{
     font-family:'Poppins', sans-serif;
 }
 .overlay{
