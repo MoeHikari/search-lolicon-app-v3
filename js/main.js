@@ -165,7 +165,7 @@ async function runTool() {
         createToast("success", "加载完成", true, 3);
         submitBlock = false;
     } else {
-        var number = document.getElementById("number");
+        var number = document.getElementById("number").value;
         if (number > window.config.maxNumber) {
             number = window.config.maxNumber;
         }
