@@ -159,7 +159,7 @@ async function runTool() {
             }
             var setuAINote = "";
             if (number != 1) {
-                setuNum = "【" + (index + 1) + "】";
+                setuNum = String(index + 1) + ".";
             }
             setuURL = value['urls'][window.config.setSize];
             setuDownload = value['urls']['original'];
