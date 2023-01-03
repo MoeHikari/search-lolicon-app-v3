@@ -40,6 +40,7 @@ function radioCheck1(id) {
     } else {
         document.getElementById('numberInfo').innerHTML = "<br>获取数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='1' min='1' max='" + window.config.maxNumber + "' />张";
     }
+    document.getElementById('keyword').placeholder = "请输入搜索关键词";
     for (var i = 0; i <= 3; i++) {
         if (i == id) {
             continue;
@@ -49,6 +50,7 @@ function radioCheck1(id) {
 }
 function radioCheck2() {
     document.getElementById('numberInfo').innerHTML = "<br>注：此工具最多可获取100页的图片";
+    document.getElementById('keyword').placeholder = "请输入作品PID";
     for (var i = 0; i <= 2; i++) {
         document.getElementById('radio' + i).checked = null;
     }
