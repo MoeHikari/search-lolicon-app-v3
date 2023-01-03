@@ -21,6 +21,7 @@ input[id='keyword']:focus{
     border:1px solid #ff7496;
 }
 input[id='number']{
+    width:4rem;
     box-sizing:border-box;
     border-radius:4px;
     border:1px solid #c8cccf;
