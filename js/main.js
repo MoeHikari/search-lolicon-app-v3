@@ -48,7 +48,7 @@ function radioCheck1(id) {
     }
 }
 function radioCheck2() {
-    document.getElementById('numberInfo').innerHTML = "<br>注：此工具最多可获取的图片页数为100";
+    document.getElementById('numberInfo').innerHTML = "<br>注：此工具最多可获取100页的图片";
     for (var i = 0; i <= 2; i++) {
         document.getElementById('radio' + i).checked = null;
     }
