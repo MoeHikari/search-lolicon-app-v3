@@ -116,6 +116,7 @@ async function runTool() {
             console.log(e.message);
         }
         if (url == "no url") {
+            createToast("error", "没有搜索结果", true, 3);
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
             return;
         }
@@ -137,6 +138,7 @@ async function runTool() {
         }
         setu = $().getSetu(setuData + "r18=" + r18 + "&num=" + number + "&proxy=" + window.config.setProxy + "&size=original&size=" + window.config.setSize).data;
         if (setu.length == 0) {
+            createToast("error", "没有搜索结果", true, 3);
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
             return;
         }
@@ -147,10 +149,12 @@ async function runTool() {
         var setuMode = "";
         var setuTag = "";
         var setuTagArr = [];
+        var loadError = false;
         setu.forEach(function(value, index) {
             setuTagArr = value['tags'];
             if ((window.config.hideR18 == true || window.filename == "main2.html") && setuTagArr.indexOf("R-18") != -1) {
                 setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>404 Not Found</p></div><br>";
+                loadError = true;
                 return;
             }
             var setuAINote = "";
@@ -184,5 +188,9 @@ async function runTool() {
             }
             setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>" + setuOpInfo + setuMode + "<br>" + setuTag + setuAINote + "<br></p><img src='" + setuURL + "' width='100%'/></div><br>";
         });
+        if (loadError = true) {
+            createToast("warning", "部分图片加载失败", true, 3);
+            loadError = false;
+        }
     }
 }
