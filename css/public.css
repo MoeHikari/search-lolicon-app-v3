@@ -1,3 +1,7 @@
+@import './google-font.css';
+body{
+    font-family:'Poppins', sans-serif;
+}
 .overlay{
     z-index:2;
     display:flex;
