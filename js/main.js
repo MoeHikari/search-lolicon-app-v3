@@ -141,6 +141,7 @@ async function runTool() {
         if (url == "no url") {
             createToast("error", "没有搜索结果", true, 3);
             setuObj.innerHTML = "<div class='notice'><p>404 Not Found</p></div><br>";
+            submitBlock = false;
             return;
         }
         if (moreImg == true) {
