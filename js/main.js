@@ -58,7 +58,7 @@ function radioCheck2() {
 function getSetu(data) {
     var setu = $.ajax({
         type: "post",
-        url: "https://sla-v3.000webhostapp.com/get.php",
+        url: "get.php",
         data: {
             "url": "https://api.lolicon.app/setu/v2?" + encodeURI(data)
         },
