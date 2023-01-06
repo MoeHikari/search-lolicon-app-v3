@@ -73,8 +73,14 @@
                 fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;background-size:cover;background-position:center 0;}";
                 document.body.appendChild(fixBg);
             }
-            var cfWidgetIfr = document.getElementById("cf-chl-widget-mvmqk");
-            cfWidgetIfr.style.width = "100%";
+            var iframes = document.querySelectorAll("iframe");
+            var i;
+            for (i in iframes) {
+                if (i.indexOf("cf-chl-widget-") != -1) {
+                    i.style.width = "100%";
+                    break;
+                }
+            }
         }
         function _turnstileMaker() {
             turnstile.render('#cfWidget', {
