@@ -1,4 +1,4 @@
-getConfig();
+await getConfig();
 function readCookie(key) {
     var prefix = key + "="
     var start = document.cookie.indexOf(prefix)

@@ -66,7 +66,6 @@
             if (logined == "true") {
                 window.location.href = "index.html";
             }
-            await getConfig();
             var img = new Image();
             img.src = "https://imgapi.nahida.fun/random?sort=random";
             if (img.width == 0) {
@@ -97,6 +96,6 @@
             document.getElementById('license').value = null;
         }
     </script>
-    <script src="js/public.js"></script>
+    <script src="js/public.js?vercel-v3" async defer></script>
     <script src="js/toast.js" defer></script>
 </body>
