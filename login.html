@@ -73,7 +73,7 @@
                 fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;background-size:cover;background-position:center 0;}";
                 document.body.appendChild(fixBg);
             }
-            var iframes = document.querySelectorAll("iframe");
+            var iframes = document.getElementByTagName("iframe");
             var i;
             var ifrid;
             for (i in iframes) {
