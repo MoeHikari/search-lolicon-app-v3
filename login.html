@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="css/index.css?vercel-v3">
     <link rel="stylesheet" type="text/css" href="css/toast.css?vercel-v3">
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileMaker" async defer></script>
 </head>
 <body style='margin:0px;'>
     <div id='overlay' class='overlay' style="overflow:hidden;">
@@ -16,7 +15,6 @@
                 <h3>
                     <form action="index.html" method="post" target="result_iframe" onsubmit="loginer()">
                         <input id='license' type='password' name='license' placeholder='请输入内部许可码'>
-                        <div id="cfWidget"></div> 
                         <input id='submit' type='submit' value='登录'>
                     </form>
                 </h3>
@@ -74,15 +72,6 @@
                 fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;background-size:cover;background-position:center 0;}";
                 document.body.appendChild(fixBg);
             }
-        }
-        function _turnstileMaker() {
-            turnstile.render('#cfWidget', {
-                sitekey: '0x4AAAAAAAB3iOjcgxzpkqzO',
-                callback: '_turnstileChecker'
-            });
-        }
-        function _turnstileChecker(token) {
-            console.log(token);
         }
         function loginer() {
             var license = document.getElementById("license").value;
