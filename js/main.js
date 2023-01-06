@@ -1,5 +1,5 @@
 var submitBlock = false;
-window.onload = async function () {
+window.onload = function () {
     var verified = readCookie("verified");
     if (verified != "true") {
         window.location.href = "index.html";
@@ -10,7 +10,6 @@ window.onload = async function () {
         window.location.href = "index.html";
         return;
     }
-    await getConfig();
     document.getElementById('bigimg').innerHTML = "<h3 style=\"text-align:center;\">加载完成</h3><input id='submit' type='submit' value='Link Start !' onclick=\"openTools()\">";
     var img = new Image();
     img.src = "https://imgapi.nahida.fun/random?sort=random";
