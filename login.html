@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css?vercel-v3">
     <link rel="stylesheet" type="text/css" href="css/toast.css?vercel-v3">
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileChecker" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileMaker" async defer></script>
 </head>
 <body style='margin:0px;'>
     <div id='overlay' class='overlay' style="overflow:hidden;">
@@ -75,11 +75,14 @@
                 document.body.appendChild(fixBg);
             }
         }
-        function _turnstileChecker() {
-            console.debug('_turnstileCb called');
+        function _turnstileMaker() {
             turnstile.render('#cfWidget', {
                 sitekey: '0x4AAAAAAAB3iOjcgxzpkqzO',
+                callback: '_turnstileChecker'
             });
+        }
+        function _turnstileChecker(token) {
+            console.log(token);
         }
         function loginer() {
             var license = document.getElementById("license").value;
