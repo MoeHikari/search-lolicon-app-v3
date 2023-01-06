@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css?vercel-v3">
     <link rel="stylesheet" type="text/css" href="css/toast.css?vercel-v3">
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
 </head>
 <body style='margin:0px;'>
     <div id='overlay' class='overlay' style="overflow:hidden;">
@@ -16,7 +16,7 @@
                 <h3>
                     <form action="index.html" method="post" target="result_iframe" onsubmit="loginer()">
                         <input id='license' type='password' name='license' placeholder='请输入内部许可码'>
-                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAB3iOjcgxzpkqzO" style="width:100%"></div> 
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAB3iOjcgxzpkqzO" style="width:100%" id="container"></div> 
                         <input id='submit' type='submit' value='登录'>
                     </form>
                 </h3>
@@ -75,6 +75,14 @@
                 document.body.appendChild(fixBg);
             }
         }
+        window.onloadTurnstileCallback = function () {
+            turnstile.render('#container', {
+                sitekey: '0x4AAAAAAAB3iOjcgxzpkqzO',
+                callback: function(token) {
+                    console.log(`Challenge Success ${token}`);
+                },
+            });
+        };
         function loginer() {
             var license = document.getElementById("license").value;
             if (license == window.config.setLicense) {
