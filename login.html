@@ -16,11 +16,11 @@
                 <h3>
                     <form action="index.html" method="post" target="result_iframe" onsubmit="loginer()">
                         <input id='license' type='password' name='license' placeholder='请输入内部许可码'>
-                        <div id="cfWidget"></div> 
                         <input id='submit' type='submit' value='登录'>
                     </form>
                 </h3>
                 <div class='notice'>
+                    <div id="cfWidget"></div> 
                     <p>
                         <b>
                             许可码是原神全平台公测时间<br>
@@ -83,7 +83,11 @@
         function loginer() {
             var license = document.getElementById("license").value;
             var cfRes = turnstile.getResponse('#cfWidget');
-            if (license == window.config.setLicense && typeof(cfRes) != "undefined") {
+            if (typeof(cfRes) == "undefined") {
+                createToast("error", "您没有通过CAPTCHA，请重试", true, 3);
+                turnstile.reset('#cfWidget');
+            }
+            if (license == window.config.setLicense) {
                 createToast("success", "登录成功！", true, 3);
                 setTimeout(() => {
                     writeCookie("logined", "true");
