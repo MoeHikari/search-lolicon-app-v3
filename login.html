@@ -73,22 +73,11 @@
                 fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;background-size:cover;background-position:center 0;}";
                 document.body.appendChild(fixBg);
             }
-            var iframes = document.getElementByTagName("iframe");
-            var i;
-            var ifrid;
-            for (i in iframes) {
-                ifrid = i.id;
-                if (typeof(ifrid) != "undefined") {
-                    if (ifrid.indexOf("cf-chl-widget-") != -1) {
-                        i.style = "border:none;overflow:hidden;width:100%;height:65px;";
-                        break;
-                    }
-                }
-            }
         }
         function _turnstileMaker() {
             turnstile.render('#cfWidget', {
-                sitekey: '0x4AAAAAAAB3iOjcgxzpkqzO'
+                sitekey: '0x4AAAAAAAB3iOjcgxzpkqzO',
+                tabindex: 1
             });
         }
         function loginer() {
