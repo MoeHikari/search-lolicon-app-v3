@@ -60,6 +60,10 @@
         </div>
     </div>
     <iframe id="result_iframe" name="result_iframe" security="restricted" sandbox="" style="display:none;"></iframe>
+    <script type="text/javascript" defer>
+        var cfIfr = document.querySelector("iframe[tabindex='1']");
+        cfIfr.style = "border:none;overflow:hidden;width:100%;height:65px;";
+    </script>
     <script type="text/javascript">
         window.onload = function () {
             var logined = readCookie("logined");
@@ -73,8 +77,6 @@
                 fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;background-size:cover;background-position:center 0;}";
                 document.body.appendChild(fixBg);
             }
-            var cfIfr = document.querySelector("iframe[tabindex='1']");
-            cfIfr.style = "border:none;overflow:hidden;width:100%;height:65px;";
         }
         function _turnstileMaker() {
             turnstile.render('#cfWidget', {
