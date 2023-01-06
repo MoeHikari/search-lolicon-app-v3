@@ -61,7 +61,7 @@
     </div>
     <iframe id="result_iframe" name="result_iframe" security="restricted" sandbox="" style="display:none;"></iframe>
     <script type="text/javascript">
-        window.onload = async function () {
+        window.onload = function () {
             var logined = readCookie("logined");
             if (logined == "true") {
                 window.location.href = "index.html";
@@ -96,6 +96,6 @@
             document.getElementById('license').value = null;
         }
     </script>
-    <script src="js/public.js?vercel-v3" async defer></script>
+    <script src="js/public.js?vercel-v3.1" defer></script>
     <script src="js/toast.js" defer></script>
 </body>
