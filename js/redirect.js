@@ -4,17 +4,17 @@ if (stop == true) {
 }
 var pathname = window.location.pathname;
 var filename = pathname.substring(pathname.lastIndexOf('/') + 1, pathname.length);
-redirect();
-function redirect() {
+redirect(true);
+function redirect(autoload=false) {
     var verified = readCookie("verified");
     var logined = readCookie("logined");
-    if (verified != "true" && filename != "verify.html") {
+    if (verified != "true" && filename != "verify.html" && (autoload == false || filename != "login.html")) {
         window.location.href = "verify.html";
-        throw SyntaxError();
+        return;
     }
-    if (logined != "true" && filename != "login.html") {
+    if (logined != "true" && filename != "login.html" && (autoload == false || filename != "verify.html")) {
         window.location.href = "login.html";
-        throw SyntaxError();
+        return;
     }
     if (verified == "true" && logined == "true" && filename != "main.html" && filename != "main2.html") {
         if (window.config.hideR18 == false) {
