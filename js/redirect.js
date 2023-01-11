@@ -44,6 +44,7 @@ function isTencentAppBrowser() {
     filename = pathname.substring(pathname.lastIndexOf('/') + 1, pathname.length);
     if (filename != "index.html") {
         window.location.href = "index.html";
+        return true;
     }
     var info = document.getElementById("info");
     switch (app) {
