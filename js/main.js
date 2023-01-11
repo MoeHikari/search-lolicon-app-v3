@@ -1,3 +1,5 @@
+pathname = window.location.pathname;
+window.filename = pathname.substring(pathname.lastIndexOf('/') + 1, pathname.length);
 var verified = readCookie("verified");
 if (verified != "true") {
     window.location.href = "verify.html";
@@ -22,8 +24,6 @@ window.onload = function () {
     }
 }
 function openTools() {
-    pathname = window.location.pathname;
-    window.filename = pathname.substring(pathname.lastIndexOf('/') + 1, pathname.length);
     var icon = document.querySelector('link[rel*="icon"]');
     icon.href = window.config.htmlIcon;
     document.getElementById('numberInfo').innerHTML = "获取数量(1-" + window.config.maxNumber + ")：<input id='number' type='number' name='number' value='1' min='1' max='" + window.config.maxNumber + "' />张";
