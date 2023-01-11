@@ -8,11 +8,11 @@ redirect();
 function redirect() {
     var verified = readCookie("verified");
     var logined = readCookie("logined");
-    if (verified != "true" && filename != "login.html"){
+    if (verified != "true" && filename != "verify.html"){
         window.location.href = "verify.html";
         throw SyntaxError();
     }
-    if (logined != "true" && filename != "verify.html") {
+    if (logined != "true" && filename != "login.html") {
         window.location.href = "login.html";
         throw SyntaxError();
     }
