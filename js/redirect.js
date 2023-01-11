@@ -8,15 +8,13 @@ redirect();
 function redirect() {
     var verified = readCookie("verified");
     var logined = readCookie("logined");
-    if (filename != "login.html" && filename != "verify.html"){
-        if (verified != "true") {
-            window.location.href = "verify.html";
-            throw SyntaxError();
-        }
-        if (logined != "true") {
-            window.location.href = "login.html";
-            throw SyntaxError();
-        }
+    if (verified != "true" && filename != "login.html"){
+        window.location.href = "verify.html";
+        throw SyntaxError();
+    }
+    if (logined != "true" && filename != "verify.html") {
+        window.location.href = "login.html";
+        throw SyntaxError();
     }
     if (verified == "true" && logined == "true" && filename != "main.html" && filename != "main2.html") {
         if (window.config.hideR18 == false) {
