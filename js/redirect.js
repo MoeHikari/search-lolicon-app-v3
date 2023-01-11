@@ -7,12 +7,12 @@ var filename = pathname.substring(pathname.lastIndexOf('/') + 1, pathname.length
 redirect();
 function redirect() {
     var verified = readCookie("verified");
+    var logined = readCookie("logined");
     if (filename != "login.html" && filename != "verify.html"){
         if (verified != "true") {
             window.location.href = "verify.html";
             throw SyntaxError();
         }
-        var logined = readCookie("logined");
         if (logined != "true") {
             window.location.href = "login.html";
             throw SyntaxError();
