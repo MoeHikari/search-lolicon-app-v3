@@ -3,10 +3,12 @@ window.filename = pathname.substring(pathname.lastIndexOf('/') + 1, pathname.len
 var verified = readCookie("verified");
 if (verified != "true") {
     window.location.href = "verify.html";
+    throw SyntaxError();
 }
 var logined = readCookie("logined");
 if (logined != "true") {
     window.location.href = "login.html";
+    throw SyntaxError();
 }
 if (window.config.hideR18 == true && window.filename == "main.html") {
     window.location.href = "main2.html";
