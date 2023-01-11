@@ -248,7 +248,7 @@ async function runTool() {
             setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>" + setuOpInfo + setuMode + "<br>" + setuTag + setuAINote + "<br></p><a href='" + setuDownload + "' target='_blank'><img src='" + setuURL + "' alt='404 Not Found' title='点击查看原图' width='100%'/></a></div><br>";
         });
         if (loadError != 0) {
-            if (setu.length >= 2 && loadError < setu.length) {
+            if (setuInfo.length >= 2 && loadError < setuInfo.length) {
                 createToast("warning", "部分图片加载失败", true, 3);
                 loadError = 0;
             } else {
