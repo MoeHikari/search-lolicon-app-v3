@@ -40,7 +40,7 @@
             createToast("success", "验证成功！", true, 3);
             setTimeout(() => {
                 writeCookie("verified", "true");
-                window.location.href = "index.html";
+                redirect();
             }, 2500);
         }
     </script>
