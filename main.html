@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta name='viewport' content='width=device-width,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+    <title>Search Lolicon.App V3 - Lolicon API检索工具3.0</title>
+    <link href='' rel='icon' type='image/x-icon'>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/toast.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="js/public.js" defer></script>
+    <script src="js/toast.js" defer></script>
+    <script src="config.js" defer></script>
+</head>
+<body>
+    <div id='overlay' class='overlay' style="overflow:hidden;">
+        <div class='text-bg'>
+            <div class='input_control'>
+                <h3>
+                    <form action="empty.html" method="get" target="result_iframe" onsubmit="runTool()">
+                        <input id='keyword' type='keyword' name='keyword' placeholder='请输入搜索关键词'><br>
+                        全年龄
+                        <input id='radio0' type='radio' checked='checked' onclick="radioCheck1(0)">&ensp;
+                        R18
+                        <input id='radio1' type='radio' onclick="radioCheck1(1)">&ensp;
+                        随机
+                        <input id='radio2' type='radio' onclick="radioCheck1(2)">&ensp;
+                        PID
+                        <input id='radio3' type='radio' onclick="radioCheck2()"><br>
+                        <span id='numberInfo'></span>
+                        <input id='submit' type='submit' value='立即搜索' name='submit'>
+                    </form>
+                    <div id='setuObj' class='setuObj'></div>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div id='imgLayer'></div>
+    <div id='imgBoxl' class='modal'>
+        <div id="bigimg">
+            <h3 style="text-align:center;">加载中...</h3>
+        </div>
+    </div>
+    <iframe id="result_iframe" name="result_iframe" style="display:none;"></iframe>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

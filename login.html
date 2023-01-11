@@ -1,0 +1,91 @@
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta name='viewport' content='width=device-width,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+    <title>登录 | Search Lolicon.App V3 - Lolicon API检索工具3.0</title>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/toast.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="js/public.js" defer></script>
+    <script src="js/toast.js" defer></script>
+    <script src="config.js" defer></script>
+</head>
+<body style='margin:0px;'>
+    <div id='overlay' class='overlay' style="overflow:hidden;">
+        <div class='text-bg'>
+            <div class='input_control'>
+                <div id='info'></div>
+                <h3>
+                    <form action="empty.html" method="get" target="result_iframe" onsubmit="loginer()">
+                        <input id='license' type='password' name='license' placeholder='请输入内部许可码'>
+                        <input id='submit' type='submit' value='登录'>
+                    </form>
+                </h3>
+                <div class='notice'>
+                    <p>
+                        <b>欢迎使用Lolicon API检索工具V3</b>
+                    </p>
+                    <p>请阅读以下说明:</p>
+                    <p>搜索时支持AND和OR规则，方法如下:</p>
+                    <p>1.你可以使用逗号","来获取同时包含特定多个Tag的图片(最多3个)，它们之间为"与"关系，如"可莉,白丝"</p>
+                    <p>2.你可以使用分割符"|"来获取包含任意一个Tag的图片(最多20个)，它们之间为"或"关系，如"黑丝|白丝|萝莉"</p>
+                    <p>3.网站也支持搜索特定画师的图片，你可以使用类似如下语句"UID:画师UID"进行搜索</p>
+                    <p>4.你可以同时搜索多个画师的图片(最多20人)，使用逗号","连接，如"UID:7203802,UID:75026394"</p>
+                    <p>5.你可以三者混用(注意UID:xxx不可与"|"连用)，如"可莉,UID:2874136,百合|萝莉"，这表示获取画师2874136的Tag为"可莉,百合"或"可莉,萝莉"的图片</p>
+                    <p>6.如果你只搜索一个关键词，网站将会在标题/Tag/画师中进行模糊搜索</p>
+                    <p>7.除此之外，网站也支持通过PID获取任意Pixiv图片原图，你可以使用选择PID选项后在搜索框直接输入图片的PID进行搜索</p>
+                    <p>8.规则语句会被自动修正，所以您同样可以使用中文标点，如"可莉，兽耳｜泳装"</p>
+                    <p>9.请稍微节制一些(doge)</p>
+                    <p>目前可以透露的情报：</p>
+                    <div id="iframeBg">
+                        <iframe width='100%' src='https://charts.mongodb.com/charts-setu-api-qxdzw/embed/charts?id=f973f61b-912b-4dd6-b00a-f9c52db92918&amp;attribution=false'>
+                        </iframe>
+                        <iframe width='100%' src='https://charts.mongodb.com/charts-setu-api-qxdzw/embed/charts?id=b23a40a5-8c50-48ae-a950-95c81f9b013c&amp;attribution=false'>
+                        </iframe>
+                        <iframe width='100%' height='300px' src="https://charts.mongodb.com/charts-setu-api-qxdzw/embed/charts?id=d44725c5-3392-4851-9053-4232ccad8bd9&amp;attribution=false">
+                        </iframe>
+                    </div>
+                    <footer id='footer'>
+                        <hr>
+                        <p>API：
+                            <a target='_blank' href='https://api.lolicon.app' style='color:#1E90FF'>Lolicon API</a>
+                        </p>
+                        <p>感谢神代绮凛大佬您对人类进步做出的贡献，🐍图即是人类进步的原动力！</p>
+                        <p>本项目开源于 →
+                            <a target='_blank' href='https://github.com/ZiAzusa/search-lolicon-app-v3/' style='color:#1E90FF'>GitHub</a>
+                        </p>
+                        <p>2021-2023: Search Lolicon.App</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe id="result_iframe" name="result_iframe" style="display:none;"></iframe>
+    <script type="text/javascript">
+        window.onload = function () {
+            var img = new Image();
+            img.src = "https://imgapi.nahida.fun/random";
+            if (img.width == 0) {
+                var fixBg = document.createElement("style");
+                fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;background-size:cover;background-position:center 0;}";
+                document.body.appendChild(fixBg);
+            }
+        }
+        function loginer() {
+            var license = document.getElementById("license").value;
+            if (license == window.config.setLicense) {
+                createToast("success", "登录成功！", true, 3);
+                setTimeout(() => {
+                    writeCookie("logined", "true");
+                    window.location.href = "index.html";
+                }, 2500);
+                return;
+            }
+            createToast("error", "内部许可码错误！", true, 3);
+            document.getElementById('license').value = null;
+        }
+    </script>
+    <script src="js/redirect.js" defer></script>
+</body>
+</html>
