@@ -252,13 +252,13 @@ async function runTool() {
                     if (tagIndex + 1 < window.config.setShowTags && tagIndex + 1 < setuTagArr.length) {
                         setuTag = setuTag + ",";
                     }
-                } else if (window.config.setShowTags == 0) {
-                    setuTag = setuTag + tagValue;
-                    if (tagIndex + 1 == setuTagArr.length) {
-                        return;
-                    }
-                    setuTag = setuTag + ",";
+                    return;
                 }
+                setuTag = setuTag + tagValue;
+                if (tagIndex + 1 == setuTagArr.length) {
+                    return;
+                }
+                setuTag = setuTag + ",";
             });
             if (value['aiType'] == 2) {
                 setuAINote = "<br>提示：这是一幅AI绘制的作品";
