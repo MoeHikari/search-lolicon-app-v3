@@ -215,7 +215,7 @@ async function runTool() {
         var setuDownload = "";
         var setuMode = "";
         var setuTag = "";
-        var setuMoreTag = ",";
+        var setuMoreTag = "";
         var setuTagArr = [];
         var loadError = 0;
         setuInfo.forEach(function(value, index) {
@@ -236,33 +236,30 @@ async function runTool() {
                 setuMode = "<br>是否为R18图：" + value['r18'];
             }
             setuTag = "图片Tag：";
-            try {
-                setuTagArr.forEach(function(tagValue, tagIndex) {
-                    if (window.config.setShowTags != 0) {
-                        if (tagIndex + 1 > window.config.setShowTags) {
-                            setuMoreTag = setuMoreTag + tagValue;
-                            if (tagIndex + 1 == setuTagArr.length) {
-                                setuTag = setuTag + "<span id='more' style='display:none;'>" + setuMoreTag + "</span><u title='展开' onclick='unfoldTag(this);' style='cursor:pointer;'>...</u>";
-                                throw new Error('break forEach.');
-                            }
-                            setuMoreTag = setuMoreTag + ",";
+            setuMoreTag = ",";
+            setuTagArr.forEach(function(tagValue, tagIndex) {
+                if (window.config.setShowTags != 0) {
+                    if (tagIndex + 1 > window.config.setShowTags) {
+                        setuMoreTag = setuMoreTag + tagValue;
+                        if (tagIndex + 1 == setuTagArr.length) {
+                            setuTag = setuTag + "<span id='more' style='display:none;'>" + setuMoreTag + "</span><u title='展开' onclick='unfoldTag(this);' style='cursor:pointer;'>...</u>";
                             return;
                         }
-                        setuTag = setuTag + tagValue;
-                        if (tagIndex + 1 < window.config.setShowTags) {
-                            setuTag = setuTag + ",";
-                        }
-                    } else if (window.config.setShowTags == 0) {
-                        setuTag = setuTag + tagValue;
-                        if (tagIndex + 1 == setuTagArr.length) {
-                            throw new Error('break forEach.');
-                        }
+                        setuMoreTag = setuMoreTag + ",";
+                        return;
+                    }
+                    setuTag = setuTag + tagValue;
+                    if (tagIndex + 1 < window.config.setShowTags) {
                         setuTag = setuTag + ",";
                     }
-                });
-            } catch(e) {
-                console.log(e.message);
-            }
+                } else if (window.config.setShowTags == 0) {
+                    setuTag = setuTag + tagValue;
+                    if (tagIndex + 1 == setuTagArr.length) {
+                        return;
+                    }
+                    setuTag = setuTag + ",";
+                }
+            });
             if (value['aiType'] == 2) {
                 setuAINote = "<br>提示：这是一幅AI绘制的作品";
             }
