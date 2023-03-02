@@ -55,6 +55,12 @@ function radioCheck2() {
         document.getElementById('radio' + i).checked = null;
     }
 }
+function unfoldTag(node) {
+    var parentSetu = node.parentElement;
+    var moreTag = parentSetu.querySelector("#more");
+    moreTag.style.display = "inline";
+    node.style.display = "none";
+}
 function getSetu(data) {
     var request = new XMLHttpRequest();
     request.open("post", "get.php", true);
@@ -209,6 +215,7 @@ async function runTool() {
         var setuDownload = "";
         var setuMode = "";
         var setuTag = "";
+        var setuMoreTag = ",";
         var setuTagArr = [];
         var loadError = 0;
         setuInfo.forEach(function(value, index) {
@@ -231,13 +238,25 @@ async function runTool() {
             setuTag = "图片Tag：";
             try {
                 setuTagArr.forEach(function(tagValue, tagIndex) {
-                    setuTag = setuTag + tagValue;
-                    if (window.config.setShowTags != 0 && tagIndex + 1 == window.config.setShowTags) {
-                        setuTag = setuTag + "...";
-                        throw new Error('break forEach.');
-                    } else if (window.config.setShowTags == 0 && tagIndex + 1 == setuTagArr.length) {
-                        throw new Error('break forEach.');
-                    } else {
+                    if (window.config.setShowTags != 0) {
+                        if (tagIndex + 1 > window.config.setShowTags) {
+                            setuMoreTag = setuMoreTag + tagValue;
+                            if (tagIndex + 1 == setuTagArr.length) {
+                                setuTag = setuTag + "<span id='more' style='display:none;'>" + setuMoreTag + "</span><u title='展开' onclick='unfoldTag(this);' style='cursor:pointer;'>...</u>";
+                                throw new Error('break forEach.');
+                            }
+                            setuMoreTag = setuMoreTag + ",";
+                            return;
+                        }
+                        setuTag = setuTag + tagValue;
+                        if (tagIndex + 1 < window.config.setShowTags) {
+                            setuTag = setuTag + ",";
+                        }
+                    } else if (window.config.setShowTags == 0) {
+                        setuTag = setuTag + tagValue;
+                        if (tagIndex + 1 == setuTagArr.length) {
+                            throw new Error('break forEach.');
+                        }
                         setuTag = setuTag + ",";
                     }
                 });
@@ -247,7 +266,7 @@ async function runTool() {
             if (value['aiType'] == 2) {
                 setuAINote = "<br>提示：这是一幅AI绘制的作品";
             }
-            setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>" + setuOpInfo + setuMode + "<br>" + setuTag + setuAINote + "<br></p><a href='" + setuDownload + "' target='_blank'><img src='" + setuURL + "' alt='404 Not Found' title='点击查看原图' width='100%'/></a></div><br>";
+            setuObj.innerHTML = setuObj.innerHTML + "<div class='notice'><p>" + setuOpInfo + setuMode + "<br>" + setuTag + setuAINote + "</p><a href='" + setuDownload + "' target='_blank'><img src='" + setuURL + "' alt='404 Not Found' title='点击查看原图' width='100%'/></a></div><br>";
         });
         if (loadError != 0) {
             if (setuInfo.length >= 2 && loadError < setuInfo.length) {
