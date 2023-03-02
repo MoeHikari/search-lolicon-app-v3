@@ -249,7 +249,7 @@ async function runTool() {
                         return;
                     }
                     setuTag = setuTag + tagValue;
-                    if (tagIndex + 1 < window.config.setShowTags) {
+                    if (tagIndex + 1 < window.config.setShowTags && tagIndex + 1 < setuTagArr.length) {
                         setuTag = setuTag + ",";
                     }
                 } else if (window.config.setShowTags == 0) {
