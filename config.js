@@ -8,3 +8,4 @@ window.config = {
     hideR18: false, //设置是否屏蔽R18作品
     htmlIcon: "" //设置网页图标
 }
+Object.freeze(window.config); //冻结配置
