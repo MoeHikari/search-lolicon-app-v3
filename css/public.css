@@ -9,7 +9,7 @@ body,input,button{
     justify-content:center;
 }
 .overlay:before{
-    background:url(https://imgapi.nahida.fun/random) no-repeat;
+    background:url(https://imgapi.nahida.xin/random) no-repeat;
     background-size:cover;
     background-position:center 0;
     width:100%;
