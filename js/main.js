@@ -18,7 +18,7 @@ var submitBlock = false;
 document.getElementById('bigimg').innerHTML = "<h3 style=\"text-align:center;\">加载完成</h3><input id='submit' type='submit' value='Link Start !' onclick=\"openTools()\">";
 window.onload = function () {
     var img = new Image();
-    img.src = "https://imgapi.nahida.fun/random";
+    img.src = "https://imgapi.nahida.xin/random";
     if (img.width == 0) {
         var fixBg = document.createElement("style");
         fixBg.innerText = ".overlay:before{background:url(./css/background.png) no-repeat;background-size:cover;background-position:center 0;}";
